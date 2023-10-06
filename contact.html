@@ -66,18 +66,36 @@
                 Igen <input type="radio" name="eligible">
                 Nem <input type="radio" name="eligible">
             </div>
-            <div class="form-shape">
-                <label for="message">
-                 Üzenet   
-                </label>
-                <textarea name="mesg" id="message" 
-                    cols="30" rows="10">
-                </textarea>
+            <br />
+            <div class="input-box">
+                <span class="title">Üzenet</span>
+                <textarea placeholder="Kedves ... Múzeum, " required></textarea>
+                
+                <div class="characters">
+                    <span class="signal_num">0</span>
+                    <span class="limit_num">/100</span>
+                </div>
             </div>
+                <script>
+                    let inputBox = document.querySelector(".input-box"),
+                        textarea = inputBox.querySelector("textarea"),
+                        signalNum = inputBox.querySelector(".signal_num");
+                        textarea.addEventListener("keyup", () => {
+                        let valLenght = textarea.value.length; //stored textarea value length into valLength
+                    signalNum.innerText = valLenght; //converted signalNum innerText by valLength
+                    valLenght > 0 ? inputBox.classList.add("active") : inputBox.classList.remove("active"); // if valLength is greater than 0 than add active class if not than remove active class
+                    valLenght > 100 ? inputBox.classList.add("error") : inputBox.classList.remove("error"); // if valLength is greater than 100 than add error class if not than remove error class
+                    console.log(valLenght);
+                    });
+                    </script>
+            
+            
+            <br /><br />
+            <br /><br />
             <input type="submit" value="Küldés">
             <input type="reset" value="Törlés">
         </form>
-    </div>
+    
 </body>
   
 </html>
